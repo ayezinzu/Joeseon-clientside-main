@@ -1,17 +1,33 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import * as routes from "../../routes/routeConstants/appRoutes";
 import RegisterForm from "../../views/Auth/RegisterForm";
 import LoginForm from "../../views/Auth/LoginForm";
+import { AppRoutes } from "../../routes/routeConstants/appRoutes";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 const authRouter = () => {
-    return (
-        <Switch>
-            <Redirect exact strict from={routes.AUTH} to={routes.LOGIN} />
-            <Route exact path={routes.REGISTER} component={() => <RegisterForm />} />
-            <Route exact path={routes.LOGIN} component={() => <LoginForm />} />
-        </Switch>
-    )
-}
+  return (
+    <Switch>
+      <Redirect exact strict from={AppRoutes.AUTH} to={AppRoutes.LOGIN} />
+      <Route
+        exact
+        path={AppRoutes.REGISTER}
+        component={() => <RegisterForm />}
+      />
+      <Route exact path={AppRoutes.LOGIN} component={() => <LoginForm />} />
+      <Route
+        exact
+        path={AppRoutes.FORGOT_PASSWORD}
+        component={() => <ForgotPassword />}
+      />
+      <Route
+        exact
+        path={AppRoutes.RESET_PASSWORD}
+        component={() => <ResetPassword />}
+      />
+    </Switch>
+  );
+};
 
 export default authRouter;

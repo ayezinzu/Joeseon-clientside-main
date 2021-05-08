@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "../../shared/components/Navbar";
+import AppHeader from "../../shared/components/AppHeader";
 
 const Home = (props: any) => {
-    return (
-        <div>
-            <Navbar />
-            Home Page
-        </div>
-    )
-}
+  return (
+    <div>
+      <AppHeader />
+      Home Page
+    </div>
+  );
+};
 
 export default Home;

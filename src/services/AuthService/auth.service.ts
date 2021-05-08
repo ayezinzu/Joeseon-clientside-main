@@ -1,64 +1,154 @@
 import axiosInstance from "../../interceptor/axiosInstance";
-import { USER_LOGIN } from "../../routes/routeConstants/apiRoutes";
-import { deserialize } from "serializr";
+import { deserialize, serialize } from "serializr";
 import { User } from "../../models/user.model";
 import { store } from "../../store";
-import { AUTHENTICATED } from "../../store/definitions/authConstants";
+import {
+  AUTHENTICATED,
+  SET_USER,
+  UNAUTHENTICATED,
+} from "../../store/definitions/authConstants";
 import Notification from "../../shared/components/Notification";
 import { NotificationTypes } from "../../enums/notificationTypes";
-import { useState } from "react";
-import { useHistory } from "react-router";
-import { HOME } from "../../routes/routeConstants/appRoutes";
+import { ApiRoutes } from "../../routes/routeConstants/apiRoutes";
 
-const UserService = () => {
-	const history = useHistory();
+export class AuthService {
+  static loginUser(
+    user: User,
+    onSuccess: (user: User) => void,
+    onError: () => void,
+    onFinal: () => void
+  ) {
+    const userJSON = serialize(user);
+    axiosInstance
+      .post(ApiRoutes.SIGNIN, userJSON)
+      .then((response) => {
+        localStorage.setItem("accessToken", response.data.accessToken);
+        const user = deserialize(User, response.data);
+        store.dispatch({
+          type: AUTHENTICATED,
+          payload: {
+            authenticated: true,
+            user,
+          },
+        });
+        store.dispatch({
+          type: SET_USER,
+          payload: {
+            user,
+          },
+        });
+        Notification({
+          message: "Login",
+          description: "Logged in successfully",
+          type: NotificationTypes.SUCCESS,
+        });
+        onSuccess(user);
+      })
+      .catch((error) => {
+        onError();
+      })
+      .finally(() => {
+        onFinal();
+      });
+  }
 
-	const [user, setUser] = useState<User>();
+  static logoutUser(
+    onSuccess: () => void,
+    onError: () => void,
+    onFinal: () => void
+  ) {
+    localStorage.clear();
+    Notification({
+      message: "Logged out! Please sign in to continue",
+      type: NotificationTypes.SUCCESS,
+    });
+    store.dispatch({
+      type: UNAUTHENTICATED,
+      payload: {
+        authenticated: false,
+      },
+    });
+    store.dispatch({
+      type: SET_USER,
+      payload: {
+        user: undefined,
+      },
+    });
+    /*axiosInstance
+            .delete(ApiRoutes.SIGNIN)
+            .then((response) => {
+                localStorage.setItem("accessToken", response.data.accessToken);
+                const user = deserialize(User, response.data);
+                store.dispatch({
+                    type: AUTHENTICATED,
+                    payload: {
+                        authenticated: true,
+                        user,
+                    },
+                });
+                store.dispatch({
+                    type: SET_USER,
+                    payload: {
+                        user,
+                    },
+                });
+                Notification({
+                    message: "Login",
+                    description: "Logged in successfully",
+                    type: NotificationTypes.SUCCESS,
+                });
+                onSuccess(user);
+            })
+            .catch((error) => {
+                onError();
+            })
+            .finally(() => {
+                onFinal();
+            });*/
+  }
 
-	const [error, setError] = useState<Error>();
+  static signUpUser(
+    user: User,
+    onSuccess: () => void,
+    onError: () => void,
+    onFinal: () => void
+  ) {
+    const userJSON = serialize(user);
+    axiosInstance
+      .post(ApiRoutes.SIGNUP, userJSON)
+      .then((response) => {
+        Notification({
+          message: "Registered successfully! Please login to continue!",
+          type: NotificationTypes.SUCCESS,
+        });
+        onSuccess();
+      })
+      .catch((error) => {
+        onError();
+      })
+      .finally(() => {
+        onFinal();
+      });
+  }
 
-	const [loading, setLoading] = useState(false);
+  static getUser(
+    onSuccess: (user: User) => void,
+    onError: () => void,
+    onFinal: () => void
+  ) {
+    axiosInstance
+      .get(ApiRoutes.USER)
+      .then((response) => {
+        const user = deserialize(User, response.data);
+        onSuccess(user);
+      })
+      .catch((error) => {
+        onError();
+      })
+      .finally(() => {
+        onFinal();
+      });
+  }
+}
 
-	const loginUser = (data: User) => {
-		setLoading(true);
-		return axiosInstance
-			.post(USER_LOGIN, data)
-			.then((response) => {
-				const userDetails = deserialize(User, response.data["user"]);
-				store.dispatch({
-					type: AUTHENTICATED,
-					payload: {
-						authenticated: true,
-						user: userDetails,
-					},
-				});
-				Notification({
-					message: "Login",
-					description: "Logged in successfully",
-					type: NotificationTypes.SUCCESS,
-				});
-				setUser(userDetails);
-				history.push(HOME);
-			})
-			.catch((error) => {
-				Notification({
-					message: "Login failed",
-					description: "incorrect email or password",
-					type: NotificationTypes.ERROR,
-				});
-				setError(error);
-			})
-			.finally(() => {
-				setLoading(false);
-			});
-	};
-
-	return {
-		user,
-		error,
-		loading,
-		loginUser,
-	};
-};
-
-export default UserService;
+export default AuthService;

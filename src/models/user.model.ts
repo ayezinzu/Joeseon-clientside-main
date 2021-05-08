@@ -21,4 +21,8 @@ export class User {
 
   @serializable(alias("roles", list(primitive())))
   roles: string[] = [UserRoleEnum.USER];
+
+  getUserRole() {
+    return this.roles?.join(", ");
+  }
 }

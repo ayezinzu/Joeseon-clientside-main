@@ -17,7 +17,12 @@ function UserAccount({ user }: UserAccountProps) {
         <Row align="top">
           <Col span={8}>
             <div className="news-wrapper">
-              <h1> Hello {user?.username} </h1>
+              <h1>
+                Hello {user?.username}{" "}
+                <span className="text-capitalize">
+                  ({user?.getUserRole()}){" "}
+                </span>
+              </h1>
             </div>
           </Col>
           <Col span={16}>

@@ -1,0 +1,9 @@
+@import "src/styles/variables";
+
+.ant-spin.ant-spin-lg.ant-spin-spinning.app-loader {
+  display: block;
+  margin: 2rem auto 0 auto;
+  .ant-spin-dot {
+    font-size: 3rem;
+  }
+}

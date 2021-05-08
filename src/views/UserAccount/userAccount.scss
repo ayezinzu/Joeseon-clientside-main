@@ -1,0 +1,18 @@
+@import "src/styles/variables";
+
+.user-account {
+
+}
+
+.user-account__form-wrapper {
+  background-color: $secondary-bg;
+  > div {
+    width: 50%;
+    margin: 0 auto;
+    padding: 7rem 0;
+  }
+}
+
+.news-wrapper, .user-account__form-wrapper {
+  height: 100%;
+}

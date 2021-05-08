@@ -58,10 +58,6 @@ export class AuthService {
     onFinal: () => void
   ) {
     localStorage.clear();
-    Notification({
-      message: "Logged out! Please sign in to continue",
-      type: NotificationTypes.SUCCESS,
-    });
     store.dispatch({
       type: UNAUTHENTICATED,
       payload: {

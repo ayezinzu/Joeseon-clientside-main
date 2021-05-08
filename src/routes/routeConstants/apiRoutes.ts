@@ -1,5 +1,6 @@
-// Base URL
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-// Login URL
-export const USER_LOGIN = "/login"
+export const ApiRoutes = {
+  BASE_URL: process.env.REACT_APP_API_BASE_URL,
+  SIGNIN: "/auth/signin",
+  SIGNUP: "/auth/signup",
+  USER: "/user",
+};

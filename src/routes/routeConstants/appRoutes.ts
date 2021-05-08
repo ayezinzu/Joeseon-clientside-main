@@ -1,8 +1,9 @@
-
-/* Auth Routes */
-export const AUTH = "/auth"
-export const REGISTER = AUTH + "/register"
-export const LOGIN = AUTH + "/login"
-
-/* Home Route */
-export const HOME = "/home"
+export const AppRoutes = {
+  AUTH: "/auth",
+  REGISTER: "/auth/register",
+  LOGIN: "/auth/login",
+  FORGOT_PASSWORD: "/auth/forgot-password",
+  RESET_PASSWORD: "/auth/reset-password",
+  HOME: "/",
+  ACCOUNT: "/account",
+};

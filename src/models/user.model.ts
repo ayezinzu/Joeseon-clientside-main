@@ -1,9 +1,24 @@
-import {serializable, alias, primitive} from 'serializr';
+import { serializable, alias, primitive, list } from "serializr";
+import { UserRoleEnum } from "../enums/userRole.enum";
 
 export class User {
-    @serializable(alias('email', primitive()))
-    email?: string;
+  @serializable(alias("id", primitive()))
+  id?: number;
 
-    @serializable(alias('password', primitive()))
-    password?: string;
+  @serializable(alias("username", primitive()))
+  username?: string;
+
+  @serializable(alias("accessToken", primitive()))
+  accessToken?: string;
+
+  @serializable(alias("email", primitive()))
+  email?: string;
+
+  @serializable(alias("password", primitive()))
+  password?: string;
+
+  captchaResponse?: string;
+
+  @serializable(alias("roles", list(primitive())))
+  roles: string[] = [UserRoleEnum.USER];
 }

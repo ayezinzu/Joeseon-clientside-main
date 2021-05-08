@@ -10,6 +10,7 @@
     "npm": "^6.14.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-recaptcha": "^2.1.0",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
@@ -44,17 +45,19 @@
     ]
   },
   "devDependencies": {
-    "@types/react-redux": "^7.1.9",
-    "@types/react-router-dom": "^5.1.5",
-    "@types/redux-logger": "^3.0.8",
-    "@types/yup": "^0.29.3",
-    "redux-logger": "^3.0.6",
+    "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@types/jest": "^24.9.1",
     "@types/node": "^12.12.53",
     "@types/react": "^16.9.44",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@types/react-dom": "^16.9.8"
+    "@types/react-dom": "^16.9.8",
+    "@types/react-google-recaptcha": "^2.1.0",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/redux-logger": "^3.0.8",
+    "@types/yup": "^0.29.3",
+    "prettier": "^2.2.1",
+    "redux-logger": "^3.0.6"
   }
 }

@@ -1,22 +1,23 @@
 @import "src/styles/variables";
 
 .user-account {
-
-}
-
-.user-account__form-wrapper {
-  background-color: $secondary-bg;
-  > div {
-    width: 50%;
-    margin: 0 auto;
-    padding: 7rem 0;
+  color: #FFFFFF;
+  h1, h2 {
+    color: #FFFFFF;
+  }
+  a {
+    color: #FFFFFF;
   }
 }
 
-.news-wrapper, .user-account__form-wrapper {
-  height: 100%;
+.user-account__account-wrapper {
+  background-color: $secondary-bg;
+  padding: 2rem 2rem 8rem;
+  text-align: center;
 }
 
-.news-wrapper {
-  padding: 7rem 3rem 0;
+.user-account__avatar {
+  width: 250px;
+  display: block;
+  margin: 3rem auto;
 }

@@ -1,37 +1,35 @@
 import React from "react";
 import "./userAccount.scss";
-import AppHeader from "../../../shared/components/AppHeader";
 import AuthContainer from "../../../store/container/AuthContainer";
 import { AuthReducerProps } from "../../../store/reducers/authReducer";
-import { Row, Col } from "antd";
 import "./userAccount.scss";
-import ChangePasswordForm from "../../Auth/ChangePasswordForm";
+import userAvatar from "../../../assets/images/userAvatar.png";
+import { Button } from "antd";
+import { Link } from "react-router-dom";
+import { AppRoutes } from "../../../routes/routeConstants/appRoutes";
 
 interface UserAccountProps extends AuthReducerProps {}
 
 function UserAccount({ user }: UserAccountProps) {
   return (
     <div className="user-account">
-      <div>
-        <Row align="top">
-          <Col span={8}>
-            <div className="news-wrapper">
-              <h1>
-                Hello {user?.username}{" "}
-                <span className="text-capitalize">
-                  ({user?.getUserRole()}){" "}
-                </span>
-              </h1>
-            </div>
-          </Col>
-          <Col span={16}>
-            <div className="user-account__form-wrapper">
-              <div>
-                <ChangePasswordForm />
-              </div>
-            </div>
-          </Col>
-        </Row>
+      <div className="user-account__account-wrapper">
+        <h1>ACCOUNT</h1>
+        <img
+          src={userAvatar}
+          alt="User Avatar"
+          className="user-account__avatar"
+        />
+        <h2>{user?.username}</h2>
+        <h2 className="text-pink">UNVERIFIED</h2>
+        <Link to={AppRoutes.VERIFY_ACCOUNT}>
+          <Button type="primary">VERIFY</Button>
+        </Link>
+        <div className="mt-4 text-center">
+          <span className="text-bold">
+            <Link to={AppRoutes.CHANGE_PASSWORD}>Change Password</Link>
+          </span>
+        </div>
       </div>
     </div>
   );

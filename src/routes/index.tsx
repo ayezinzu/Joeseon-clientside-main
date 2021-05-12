@@ -5,12 +5,18 @@ import { AppRoutes as appRoutes } from "./routeConstants/appRoutes";
 import AuthWrapper from "../views/Auth/AuthWrapper";
 import requiredAuth from "../shared/components/HOC/requireAuth";
 import Home from "../views/Home";
-import UserAccount from "../views/UserAccount";
+import UserAccount from "../views/Account/UserAccount";
 import AuthContainer from "../store/container/AuthContainer";
 import { AuthReducerProps } from "../store/reducers/authReducer";
 import AuthService from "../services/AuthService/auth.service";
 import { User } from "../models/user.model";
 import AppLoader from "../shared/components/AppLoader";
+import AppHeader from "../shared/components/AppHeader";
+import { UserRoleEnum } from "../enums/userRole.enum";
+import AdminAccount from "../views/Account/AdminAccount";
+import ModeratorAccount from "../views/Account/ModeratorAccount";
+import ChangePasswordForm from "../views/Auth/ChangePasswordForm";
+import VerifyAccountForm from "../views/Account/VerifyAccountForm";
 
 export const appHistory = createBrowserHistory();
 interface AppRoutesProps extends AuthReducerProps {}
@@ -25,18 +31,20 @@ const AppRoutes = ({ authenticated, user, setUser }: AppRoutesProps) => {
   };
 
   useEffect(() => {
-    if (authenticated && !user) {
-      setLoading(true);
-      AuthService.getUser(
-        (user: User) => {
-          setUser(user);
-          setShowRoutes(true);
-        },
-        () => {},
-        () => {
-          setLoading(false);
-        }
-      );
+    if (authenticated) {
+      if (!user) {
+        setLoading(true);
+        AuthService.getUser(
+          (user: User) => {
+            setUser(user);
+            setShowRoutes(true);
+          },
+          () => {},
+          () => {
+            setLoading(false);
+          }
+        );
+      }
     } else {
       setShowRoutes(true);
     }
@@ -46,7 +54,23 @@ const AppRoutes = ({ authenticated, user, setUser }: AppRoutesProps) => {
     {
       exact: true,
       path: appRoutes.ACCOUNT,
-      component: isAuthenticated(UserAccount),
+      component: isAuthenticated(
+        user?.roles?.includes(UserRoleEnum.ADMIN)
+          ? AdminAccount
+          : user?.roles?.includes(UserRoleEnum.MODERATOR)
+          ? ModeratorAccount
+          : UserAccount
+      ),
+    },
+    {
+      exact: true,
+      path: appRoutes.CHANGE_PASSWORD,
+      component: isAuthenticated(ChangePasswordForm),
+    },
+    {
+      exact: true,
+      path: appRoutes.VERIFY_ACCOUNT,
+      component: isAuthenticated(VerifyAccountForm),
     },
   ];
 
@@ -54,8 +78,9 @@ const AppRoutes = ({ authenticated, user, setUser }: AppRoutesProps) => {
     <div>
       {showRoutes && (
         <Router history={appHistory}>
+          <AppHeader />
           <Switch>
-            <Redirect exact from={appRoutes.HOME} to={appRoutes.ACCOUNT} />
+            {/*<Redirect exact from={appRoutes.HOME} to={appRoutes.ACCOUNT} />*/}
             <Route
               exact={false}
               path={appRoutes.AUTH}

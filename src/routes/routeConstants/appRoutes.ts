@@ -6,4 +6,6 @@ export const AppRoutes = {
   RESET_PASSWORD: "/auth/reset-password",
   HOME: "/",
   ACCOUNT: "/account",
+  CHANGE_PASSWORD: "/change-password",
+  VERIFY_ACCOUNT: "/verify-account",
 };

@@ -1,0 +1,18 @@
+@import "variables";
+
+.ant-btn.ant-btn-primary {
+  background-color: $primary-pink;
+  border: none;
+  color: #FFFFFF;
+  border-radius: 50em;
+  padding: 15px 5rem;
+  height: auto;
+  margin-top: 2rem;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.ant-btn-primary[disabled], .ant-btn-primary[disabled]:hover, .ant-btn-primary[disabled]:focus, .ant-btn-primary[disabled]:active {
+  background-color: $primary-pink-light;
+  color: #FFFFFF;
+}

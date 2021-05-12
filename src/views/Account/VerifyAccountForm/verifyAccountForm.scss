@@ -1,0 +1,42 @@
+@import "src/styles/variables";
+
+.verify-account-form {
+  color: #FFFFFF;
+  background-color: $secondary-bg;
+  font-size: 15px;
+  min-height: 100vh;
+  h1, h2, a {
+    color: #FFFFFF;
+    text-align: center;
+  }
+  p {
+    margin-bottom: 0.5rem;
+  }
+  padding: 2rem 2rem 10rem;
+  text-align: center;
+  > div {
+    width: 30%;
+    margin: 0 auto;
+  }
+}
+
+.verify-account-form__drag-and-drop {
+  border: 1px dashed #FFFFFF;
+  background-color: $input-bg;
+  cursor: pointer;
+  padding: 1rem;
+  margin-top: 3rem;
+  &:focus {
+    outline: none;
+  }
+}
+
+.verify-account-form__download-icon {
+  display: block;
+  width: 100px;
+  margin: 1rem auto;
+}
+
+.verify-account-form__form-title {
+  font-size: 20px;
+}

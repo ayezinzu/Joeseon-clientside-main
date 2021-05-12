@@ -3,7 +3,7 @@ import "./registerForm.scss";
 import { Form, Formik, FormikValues } from "formik";
 import InputField from "../../../shared/components/InputField";
 import { Button } from "antd";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { AppRoutes } from "../../../routes/routeConstants/appRoutes";
 import { User } from "../../../models/user.model";
 import "./registerForm.scss";

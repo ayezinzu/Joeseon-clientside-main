@@ -3,8 +3,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import RegisterForm from "../../views/Auth/RegisterForm";
 import LoginForm from "../../views/Auth/LoginForm";
 import { AppRoutes } from "../../routes/routeConstants/appRoutes";
-import ForgotPassword from "./ForgotPassword";
-import ResetPassword from "./ResetPassword";
+import ForgotPassword from "./ForgotPasswordForm";
+import ResetPassword from "./ResetPasswordForm";
 
 const authRouter = () => {
   return (

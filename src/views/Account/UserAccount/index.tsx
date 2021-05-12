@@ -1,18 +1,17 @@
 import React from "react";
 import "./userAccount.scss";
-import AppHeader from "../../shared/components/AppHeader";
-import AuthContainer from "../../store/container/AuthContainer";
-import { AuthReducerProps } from "../../store/reducers/authReducer";
+import AppHeader from "../../../shared/components/AppHeader";
+import AuthContainer from "../../../store/container/AuthContainer";
+import { AuthReducerProps } from "../../../store/reducers/authReducer";
 import { Row, Col } from "antd";
 import "./userAccount.scss";
-import ChangePasswordForm from "./ChangePasswordForm";
+import ChangePasswordForm from "../../Auth/ChangePasswordForm";
 
 interface UserAccountProps extends AuthReducerProps {}
 
 function UserAccount({ user }: UserAccountProps) {
   return (
     <div className="user-account">
-      <AppHeader />
       <div>
         <Row align="top">
           <Col span={8}>

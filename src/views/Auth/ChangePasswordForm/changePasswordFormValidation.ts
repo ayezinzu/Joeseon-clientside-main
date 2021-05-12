@@ -7,7 +7,7 @@ export const changePasswordFormValidation = Yup.object().shape({
       "Password should contain atleast 8 characters, one letter, one number and one symbol"
     )
     .required("Old Password is required!"),
-  newPassword: Yup.string()
+  password: Yup.string()
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       "Password should contain atleast 8 characters, one letter, one number and one symbol"
@@ -15,5 +15,5 @@ export const changePasswordFormValidation = Yup.object().shape({
     .required("New Password is required!"),
   confirmPassword: Yup.string()
     .required("Password confirmation is required")
-    .oneOf([Yup.ref("newPassword"), ""], "Passwords must match"),
+    .oneOf([Yup.ref("password"), ""], "Passwords must match"),
 });

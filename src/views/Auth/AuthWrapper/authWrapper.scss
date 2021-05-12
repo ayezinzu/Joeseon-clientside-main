@@ -21,7 +21,7 @@
     }
   }
   .ant-btn.submit-btn {
-    background-color: #ED585A;
+    background-color: $primary-pink;
     width: 100%;
     border: none;
     color: #FFFFFF;
@@ -33,7 +33,7 @@
     font-size: 18px;
   }
   .ant-btn[disabled], .ant-btn[disabled]:hover, .ant-btn[disabled]:focus, .ant-btn[disabled]:active {
-    background-color: #ED585A;
+    background-color: $primary-pink;
     color: #FFFFFF;
   }
 }

@@ -5,6 +5,9 @@ import InputField from "../../../shared/components/InputField";
 import { Button } from "antd";
 import { changePasswordFormValidation } from "./changePasswordFormValidation";
 import { User } from "../../../models/user.model";
+import AuthService from "../../../services/AuthService/auth.service";
+import { Link } from "react-router-dom";
+import { AppRoutes } from "../../../routes/routeConstants/appRoutes";
 
 interface ChangePasswordFormProps {}
 
@@ -13,11 +16,26 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
 
   const [formLoading, setFormLoading] = useState(false);
 
-  const handleSubmit = (values: FormikValues) => {};
+  const handleSubmit = (values: User) => {
+    setFormValues(values);
+    const user = Object.assign(new User(), values);
+    setFormLoading(true);
+    AuthService.changePassword(
+      user,
+      () => {
+        setFormValues(new User());
+      },
+      () => {},
+      () => {
+        setFormLoading(false);
+      }
+    );
+  };
 
   return (
     <div className="change-password-form">
       <Formik
+        enableReinitialize
         initialValues={formValues}
         onSubmit={handleSubmit}
         validationSchema={changePasswordFormValidation}
@@ -34,9 +52,8 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
         }) => {
           return (
             <Form>
-              <h2 className="text-bold text-center text-white mb-4">
-                Your Profile
-              </h2>
+              <h1 className="text-white mb-4">ACCOUNT</h1>
+              <h2> Reset your password</h2>
               <InputField
                 title="Old Password"
                 type="password"
@@ -46,7 +63,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
               <InputField
                 title="New Password"
                 type="password"
-                name="newPassword"
+                name="password"
                 placeholder="Enter your new password"
               />
               <InputField
@@ -56,6 +73,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
                 placeholder="Confirm password"
               />
               <Button
+                type="primary"
                 htmlType="submit"
                 className="submit-btn"
                 disabled={!isValid || formLoading}
@@ -63,6 +81,11 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
               >
                 Change Password
               </Button>
+              <div className="mt-4 text-center">
+                <span className="text-bold">
+                  <Link to={AppRoutes.ACCOUNT}>Go to Profile</Link>
+                </span>
+              </div>
             </Form>
           );
         }}

@@ -1,5 +1,6 @@
 import { serializable, alias, primitive, list } from "serializr";
 import { UserRoleEnum } from "../enums/userRole.enum";
+import { UserDocument } from "./UserDocument/userDocument.model";
 
 export class User {
   @serializable(alias("id", primitive()))
@@ -16,6 +17,23 @@ export class User {
 
   @serializable(alias("password", primitive()))
   password?: string;
+
+  @serializable(alias("confirm_password", primitive()))
+  confirmPassword?: string;
+
+  @serializable(alias("old_password", primitive()))
+  oldPassword?: string;
+
+  @serializable(alias("new_password", primitive()))
+  newPassword?: string;
+
+  @serializable(alias("token", primitive()))
+  token?: string;
+
+  @serializable(alias("status", primitive()))
+  docStatus?: string;
+
+  userDocument?: UserDocument;
 
   captchaResponse?: string;
 

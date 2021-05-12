@@ -145,6 +145,78 @@ export class AuthService {
         onFinal();
       });
   }
+
+  static forgotPassword(
+    user: User,
+    onSuccess: (user: User) => void,
+    onError: () => void,
+    onFinal: () => void
+  ) {
+    const userJSON = serialize(user);
+    axiosInstance
+      .post(ApiRoutes.FORGOT_PASSWORD, userJSON)
+      .then((response) => {
+        Notification({
+          message: "Reset password link has been sent to your email!",
+          type: NotificationTypes.SUCCESS,
+        });
+        onSuccess(user);
+      })
+      .catch((error) => {
+        onError();
+      })
+      .finally(() => {
+        onFinal();
+      });
+  }
+
+  static resetPassword(
+    user: User,
+    onSuccess: () => void,
+    onError: () => void,
+    onFinal: () => void
+  ) {
+    const userJSON = serialize(user);
+    axiosInstance
+      .post(ApiRoutes.RESET_PASSWORD, userJSON)
+      .then((response) => {
+        Notification({
+          message: "Password updated! Please login to continue",
+          type: NotificationTypes.SUCCESS,
+        });
+        onSuccess();
+      })
+      .catch((error) => {
+        onError();
+      })
+      .finally(() => {
+        onFinal();
+      });
+  }
+
+  static changePassword(
+    user: User,
+    onSuccess: () => void,
+    onError: () => void,
+    onFinal: () => void
+  ) {
+    const userJSON = serialize(user);
+    axiosInstance
+      .put(ApiRoutes.CHANGE_PASSWORD, userJSON)
+      .then((response) => {
+        Notification({
+          message: "Password updated!",
+          type: NotificationTypes.SUCCESS,
+        });
+        onSuccess();
+      })
+      .catch((error) => {
+        onError();
+      })
+      .finally(() => {
+        onFinal();
+      });
+  }
 }
 
 export default AuthService;

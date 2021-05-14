@@ -1,5 +1,6 @@
 @import "variables";
 
+/* Button styles */
 .ant-btn.ant-btn-primary {
   background-color: $primary-pink;
   border: none;
@@ -7,7 +8,6 @@
   border-radius: 50em;
   padding: 15px 5rem;
   height: auto;
-  margin-top: 2rem;
   font-weight: bold;
   font-size: 18px;
 }
@@ -15,4 +15,41 @@
 .ant-btn-primary[disabled], .ant-btn-primary[disabled]:hover, .ant-btn-primary[disabled]:focus, .ant-btn-primary[disabled]:active {
   background-color: $primary-pink-light;
   color: #FFFFFF;
+}
+
+/* Drawer styles */
+
+.ant-drawer {
+  .ant-drawer-header, .ant-drawer-body {
+    background-color: $primary-bg;
+  }
+
+  .ant-drawer-header {
+    padding: 30px 24px;
+    border: none;
+    .ant-drawer-close {
+      top: 15px;
+    }
+    h1, button {
+      color: #FFFFFF;
+    }
+  }
+}
+
+/* Modal styles */
+.ant-modal.ant-modal-confirm.ant-modal-confirm-confirm {
+ h5 {
+   font-size: 14px;
+ }
+  .ant-btn, .ant-btn.ant-btn-primary {
+    background-color: $primary-pink;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 50em;
+    height: auto;
+    font-weight: bold;
+    padding: 10px 25px;
+    width: 120px;
+    font-size: 16px;
+  }
 }

@@ -39,13 +39,8 @@ axiosInstance.interceptors.response.use(
   (error) => {
     const { response } = error;
     if (response.status === 401) {
-      AuthService.logoutUser(
-        () => {
-          appHistory.push(AppRoutes.LOGIN);
-        },
-        () => {},
-        () => {}
-      );
+      localStorage.clear();
+      appHistory.push(AppRoutes.LOGIN);
     }
     const message = response?.data?.message
       ? response?.data?.message

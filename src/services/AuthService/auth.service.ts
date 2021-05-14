@@ -57,50 +57,30 @@ export class AuthService {
     onError: () => void,
     onFinal: () => void
   ) {
-    localStorage.clear();
-    store.dispatch({
-      type: UNAUTHENTICATED,
-      payload: {
-        authenticated: false,
-      },
-    });
-    store.dispatch({
-      type: SET_USER,
-      payload: {
-        user: undefined,
-      },
-    });
-    /*axiosInstance
-            .delete(ApiRoutes.SIGNIN)
-            .then((response) => {
-                localStorage.setItem("accessToken", response.data.accessToken);
-                const user = deserialize(User, response.data);
-                store.dispatch({
-                    type: AUTHENTICATED,
-                    payload: {
-                        authenticated: true,
-                        user,
-                    },
-                });
-                store.dispatch({
-                    type: SET_USER,
-                    payload: {
-                        user,
-                    },
-                });
-                Notification({
-                    message: "Login",
-                    description: "Logged in successfully",
-                    type: NotificationTypes.SUCCESS,
-                });
-                onSuccess(user);
-            })
-            .catch((error) => {
-                onError();
-            })
-            .finally(() => {
-                onFinal();
-            });*/
+    axiosInstance
+      .delete(ApiRoutes.SIGNOUT)
+      .then((response) => {
+        localStorage.clear();
+        store.dispatch({
+          type: UNAUTHENTICATED,
+          payload: {
+            authenticated: false,
+          },
+        });
+        store.dispatch({
+          type: SET_USER,
+          payload: {
+            user: undefined,
+          },
+        });
+        onSuccess();
+      })
+      .catch((error) => {
+        onError();
+      })
+      .finally(() => {
+        onFinal();
+      });
   }
 
   static signUpUser(

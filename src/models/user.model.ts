@@ -6,6 +6,12 @@ export class User {
   @serializable(alias("id", primitive()))
   id?: number;
 
+  @serializable(alias("userId", primitive()))
+  userId?: number;
+
+  @serializable(alias("document_status", primitive()))
+  documentStatus?: number;
+
   @serializable(alias("username", primitive()))
   username?: string;
 

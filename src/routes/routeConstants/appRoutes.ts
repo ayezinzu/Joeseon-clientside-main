@@ -8,4 +8,6 @@ export const AppRoutes = {
   ACCOUNT: "/account",
   CHANGE_PASSWORD: "/change-password",
   VERIFY_ACCOUNT: "/verify-account",
+  POST_DETAIL: "/posts/:postId",
+  VERIFY_USERS: "/verify_users",
 };

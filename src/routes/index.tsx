@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Router, Switch, Route, Redirect } from "react-router-dom";
+import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { AppRoutes as appRoutes } from "./routeConstants/appRoutes";
 import AuthWrapper from "../views/Auth/AuthWrapper";
 import requiredAuth from "../shared/components/HOC/requireAuth";
-import Home from "../views/Home";
-import UserAccount from "../views/Account/UserAccount";
 import AuthContainer from "../store/container/AuthContainer";
 import { AuthReducerProps } from "../store/reducers/authReducer";
 import AuthService from "../services/AuthService/auth.service";
@@ -13,10 +11,11 @@ import { User } from "../models/user.model";
 import AppLoader from "../shared/components/AppLoader";
 import AppHeader from "../shared/components/AppHeader";
 import { UserRoleEnum } from "../enums/userRole.enum";
-import AdminAccount from "../views/Account/AdminAccount";
-import ModeratorAccount from "../views/Account/ModeratorAccount";
 import ChangePasswordForm from "../views/Auth/ChangePasswordForm";
 import VerifyAccountForm from "../views/Account/VerifyAccountForm";
+import AccountWrapper from "../views/Account/AccountWrapper";
+import PostDetail from "../views/Account/PostDetail";
+import UserList from "../views/Account/UserList";
 
 export const appHistory = createBrowserHistory();
 interface AppRoutesProps extends AuthReducerProps {}
@@ -26,8 +25,8 @@ const AppRoutes = ({ authenticated, user, setUser }: AppRoutesProps) => {
 
   const [showRoutes, setShowRoutes] = useState(false);
 
-  const isAuthenticated = (component: any) => {
-    return requiredAuth(component);
+  const isAuthenticated = (component: any, userRoles: UserRoleEnum[] = []) => {
+    return requiredAuth(component, userRoles);
   };
 
   useEffect(() => {
@@ -54,13 +53,7 @@ const AppRoutes = ({ authenticated, user, setUser }: AppRoutesProps) => {
     {
       exact: true,
       path: appRoutes.ACCOUNT,
-      component: isAuthenticated(
-        user?.roles?.includes(UserRoleEnum.ADMIN)
-          ? AdminAccount
-          : user?.roles?.includes(UserRoleEnum.MODERATOR)
-          ? ModeratorAccount
-          : UserAccount
-      ),
+      component: isAuthenticated(AccountWrapper),
     },
     {
       exact: true,
@@ -70,7 +63,17 @@ const AppRoutes = ({ authenticated, user, setUser }: AppRoutesProps) => {
     {
       exact: true,
       path: appRoutes.VERIFY_ACCOUNT,
-      component: isAuthenticated(VerifyAccountForm),
+      component: isAuthenticated(VerifyAccountForm, [UserRoleEnum.USER]),
+    },
+    {
+      exact: true,
+      path: appRoutes.POST_DETAIL,
+      component: isAuthenticated(PostDetail),
+    },
+    {
+      exact: true,
+      path: appRoutes.VERIFY_USERS,
+      component: isAuthenticated(UserList, [UserRoleEnum.MODERATOR]),
     },
   ];
 

@@ -39,12 +39,14 @@ function PostDetail(props: PostDetailProps) {
       {loading ? (
         <AppLoader loading={loading} />
       ) : (
-        <div className="post-detail__img">
-          <img
-            src={newsBackground}
-            alt="News Background"
-            className="post-detail__img"
-          />
+        <div>
+          <div className="post-detail__img">
+            <img
+              src={newsBackground}
+              alt="News Background"
+              className="post-detail__img"
+            />
+          </div>
           <div>
             <h1>{post?.title}</h1>
             <p>{post?.content}</p>

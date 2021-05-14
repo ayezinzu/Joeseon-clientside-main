@@ -1,0 +1,50 @@
+@import "src/styles/variables";
+
+.user-list {
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: $primary-bg;
+  .ant-table-wrapper {
+    width: 80%;
+    margin: 3rem auto;
+    .ant-table-thead {
+      th {
+        text-align: center;
+      }
+    }
+    .ant-table-tbody {
+      tr {
+        text-align: center;
+        background-color: $input-bg;
+        color: #FFFFFF;
+        &:hover {
+          > td {
+            background-color: $input-bg;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.user-list__status {
+  text-transform: capitalize;
+}
+
+.user-list__actions {
+  text-transform: capitalize;
+  > .ant-btn.ant-btn-primary {
+    padding: 5px 15px;
+    font-size: 14px;
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+
+.user-list__view-document {
+  > .ant-btn {
+    padding: 0;
+  }
+}

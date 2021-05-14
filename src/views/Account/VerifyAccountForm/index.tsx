@@ -21,8 +21,6 @@ function VerifyAccountForm(props: VerifyAccountFormProps) {
 
   const [userDocument, setUserDocument] = useState<UserDocument>();
 
-  const [documentStatus, setDocumentStatus] = useState<string>();
-
   const onDrop = useCallback((acceptedFiles) => {
     if (acceptedFiles?.length > 0) {
       if (acceptedFiles.length > 1) {
@@ -38,7 +36,7 @@ function VerifyAccountForm(props: VerifyAccountFormProps) {
       setFormLoading(true);
       UserService.uploadIdentityDocuments(
         attachment,
-        (docStatus: string, userDocument: UserDocument) => {
+        (userDocument: UserDocument) => {
           handleGetIdentityDocument();
         },
         () => {},
@@ -52,8 +50,7 @@ function VerifyAccountForm(props: VerifyAccountFormProps) {
   const handleGetIdentityDocument = () => {
     setLoading(true);
     UserService.getIdentityDocument(
-      (docStatus: string, userDocument: UserDocument) => {
-        setDocumentStatus(docStatus);
+      (userDocument: UserDocument) => {
         setUserDocument(userDocument);
       },
       () => {},
@@ -74,8 +71,9 @@ function VerifyAccountForm(props: VerifyAccountFormProps) {
       ) : (
         <div>
           <h1>ACCOUNT</h1>
-          {!documentStatus ? null : documentStatus ===
-            VerificationStatusEnum.NOT_UPLOADED ? (
+          {!userDocument?.status ? null : userDocument?.status ===
+              VerificationStatusEnum.NOT_UPLOADED ||
+            userDocument?.status === VerificationStatusEnum.REJECTED ? (
             <React.Fragment>
               <h2> Complete your verification</h2>
               <p className="verify-account-form__form-title">
@@ -119,8 +117,10 @@ function VerifyAccountForm(props: VerifyAccountFormProps) {
           ) : (
             <React.Fragment>
               <h2>
-                Your identity document has been uploaded. Please wait till the
-                admin team verifies it.
+                {userDocument?.status === VerificationStatusEnum.PENDING
+                  ? "Your identity document has been uploaded. Please wait till the\n" +
+                    "                admin team verifies it."
+                  : "Your identity document has been approved by the admin team."}
               </h2>
               <div className="mt-4 text-center">
                 <span className="text-bold">

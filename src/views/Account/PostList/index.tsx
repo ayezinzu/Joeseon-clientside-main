@@ -14,6 +14,7 @@ import AppLoader from "../../../shared/components/AppLoader";
 import logoBlackBackground from "../../../assets/images/logoBlackBackground.png";
 import { Link, generatePath } from "react-router-dom";
 import { AppRoutes } from "../../../routes/routeConstants/appRoutes";
+import { isAdminOrModerator } from "../../../shared/utils/authUtils";
 
 interface PostListProps extends AuthReducerProps {}
 
@@ -102,13 +103,12 @@ function PostList({ user, authenticated }: PostListProps) {
       />
       <h1>
         NEWS
-        {user?.roles?.includes(UserRoleEnum.ADMIN) ||
-          (user?.roles?.includes(UserRoleEnum.MODERATOR) && (
-            <Button type="primary" onClick={handleAddPost}>
-              <PlusOutlined />
-              Add News
-            </Button>
-          ))}
+        {isAdminOrModerator(user?.roles) && (
+          <Button type="primary" onClick={handleAddPost}>
+            <PlusOutlined />
+            Add News
+          </Button>
+        )}
       </h1>
       {loading ? (
         <AppLoader loading={loading} />
@@ -138,21 +138,20 @@ function PostList({ user, authenticated }: PostListProps) {
                       </Link>
                     </div>
                   </div>
-                  {user?.roles?.includes(UserRoleEnum.ADMIN) ||
-                    (user?.roles?.includes(UserRoleEnum.MODERATOR) && (
-                      <div className="post-list__item-footer">
-                        <Button
-                          type="primary"
-                          className="mr-3"
-                          onClick={handleEditPost(post)}
-                        >
-                          Edit
-                        </Button>
-                        <Button type="primary" onClick={handleDeletePost(post)}>
-                          Delete
-                        </Button>
-                      </div>
-                    ))}
+                  {isAdminOrModerator(user?.roles) && (
+                    <div className="post-list__item-footer">
+                      <Button
+                        type="primary"
+                        className="mr-3"
+                        onClick={handleEditPost(post)}
+                      >
+                        Edit
+                      </Button>
+                      <Button type="primary" onClick={handleDeletePost(post)}>
+                        Delete
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </Col>
             ))}

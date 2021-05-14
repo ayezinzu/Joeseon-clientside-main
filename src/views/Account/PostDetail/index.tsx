@@ -47,9 +47,7 @@ function PostDetail(props: PostDetailProps) {
           />
           <div>
             <h1>{post?.title}</h1>
-            <p>
-              <pre>{post?.content}</pre>
-            </p>
+            <p>{post?.content}</p>
           </div>
         </div>
       )}

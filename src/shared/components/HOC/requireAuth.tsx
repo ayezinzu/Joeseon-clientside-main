@@ -7,6 +7,7 @@ import { UserRoleEnum } from "../../../enums/userRole.enum";
 
 const requireAuth = (Component: any, allowedRoles: UserRoleEnum[] = []) => {
   const Authentication = (props: any) => {
+    const { user } = props;
     useEffect(() => {
       const { authenticated, history } = props;
       if (!authenticated && history.location.pathname !== AppRoutes.LOGIN) {
@@ -14,9 +15,8 @@ const requireAuth = (Component: any, allowedRoles: UserRoleEnum[] = []) => {
       }
     }, [props]);
 
-    if (allowedRoles.length) {
-      const { user } = props;
-      return allowedRoles.includes(user.role) ? (
+    if (allowedRoles.length && user) {
+      return allowedRoles.includes(user.roles[0]) ? (
         <Component {...props} />
       ) : (
         <RestrictAccess />

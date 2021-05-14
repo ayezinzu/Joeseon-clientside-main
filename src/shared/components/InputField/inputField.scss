@@ -3,14 +3,26 @@
 .input-field-wrapper {
   margin-bottom: 1rem;
 
-  input.ant-input.input-field,
+  .input-field__title {
+    color: #FFFFFF;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  input.ant-input.input-field, textarea {
+    background-color: #323232;
+    border-radius: 50em;
+    border: none;
+    color: #FFFFFF;
+    padding: 17px 25px;
+  }
+ /* input.ant-input.input-field,
   textarea {
     border: 1px solid $primary-border;
     border-radius: 8px;
     padding: 12px 15px;
     background-color: $input-bg;
     color: $primary-black;
-  }
+  }*/
 
   .input-field.ant-input-group-wrapper {
     .ant-input-group-addon {

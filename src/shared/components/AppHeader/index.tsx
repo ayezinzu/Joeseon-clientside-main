@@ -22,6 +22,7 @@ function AppHeader({ authenticated }: AppHeaderProps) {
       () => {}
     );
   };
+
   return (
     <Menu mode="horizontal" className="app-header">
       <Menu.Item>

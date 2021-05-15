@@ -1,10 +1,7 @@
 import axios from "axios";
-import { store } from "../store";
-import { REQUEST_LOGOUT } from "../store/definitions/authConstants";
 import { ApiRoutes } from "../routes/routeConstants/apiRoutes";
 import Notification from "../shared/components/Notification";
 import { NotificationTypes } from "../enums/notificationTypes";
-import AuthService from "../services/AuthService/auth.service";
 import { appHistory } from "../routes";
 import { AppRoutes } from "../routes/routeConstants/appRoutes";
 
@@ -20,7 +17,7 @@ export const getHeaders = (): any => {
 
 const axiosInstance = axios.create({
   baseURL: ApiRoutes.BASE_URL,
-  timeout: 20000,
+  timeout: 40000,
 });
 
 axiosInstance.interceptors.request.use(function (config) {

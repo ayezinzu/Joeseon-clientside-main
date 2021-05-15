@@ -14,7 +14,6 @@ export default class ModeratorService {
     axiosInstance
       .get(ApiRoutes.MODERATORS)
       .then((response) => {
-        response?.data?.map((data: any) => delete data.roles);
         const moderators = deserialize(User, response.data);
         onSuccess(moderators);
       })

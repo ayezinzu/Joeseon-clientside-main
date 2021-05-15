@@ -12,4 +12,5 @@ export const ApiRoutes = {
   USER_DOCUMENT: "/users/:userId/document",
   MY_DOCUMENT: "/user/document",
   POSTS: "/posts",
+  MODERATORS: "/moderators",
 };

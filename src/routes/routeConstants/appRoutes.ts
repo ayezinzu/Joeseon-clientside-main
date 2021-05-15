@@ -10,4 +10,5 @@ export const AppRoutes = {
   VERIFY_ACCOUNT: "/verify-account",
   POST_DETAIL: "/posts/:postId",
   VERIFY_USERS: "/verify_users",
+  MODERATORS: "/moderators",
 };

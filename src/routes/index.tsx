@@ -14,8 +14,16 @@ import { UserRoleEnum } from "../enums/userRole.enum";
 import ChangePasswordForm from "../views/Auth/ChangePasswordForm";
 import VerifyAccountForm from "../views/Account/VerifyAccountForm";
 import AccountWrapper from "../views/Account/AccountWrapper";
-import PostDetail from "../views/Account/PostDetail";
+import PostDetail from "../views/Posts/PostDetail";
 import UserList from "../views/Account/UserList";
+import ModeratorList from "../views/Moderators/ModeratorList";
+import AboutUs from "../shared/components/AboutUs";
+import OurMission from "../shared/components/OurMission";
+import Charter from "../shared/components/Charter";
+import AppFooter from "../shared/components/AppFooter";
+import DownloadLinks from "../shared/components/DownloadLinks";
+import PostList from "../views/Posts/PostList";
+import ScrollToTop from "../shared/components/ScrollToTop/ScrollToTop";
 
 export const appHistory = createBrowserHistory();
 interface AppRoutesProps extends AuthReducerProps {}
@@ -73,7 +81,15 @@ const AppRoutes = ({ authenticated, user, setUser }: AppRoutesProps) => {
     {
       exact: true,
       path: appRoutes.VERIFY_USERS,
-      component: isAuthenticated(UserList, [UserRoleEnum.MODERATOR]),
+      component: isAuthenticated(UserList, [
+        UserRoleEnum.MODERATOR,
+        UserRoleEnum.ADMIN,
+      ]),
+    },
+    {
+      exact: true,
+      path: appRoutes.MODERATORS,
+      component: isAuthenticated(ModeratorList, [UserRoleEnum.ADMIN]),
     },
   ];
 
@@ -82,20 +98,31 @@ const AppRoutes = ({ authenticated, user, setUser }: AppRoutesProps) => {
       {showRoutes && (
         <Router history={appHistory}>
           <AppHeader />
-          <Switch>
-            {/*<Redirect exact from={appRoutes.HOME} to={appRoutes.ACCOUNT} />*/}
-            <Route
-              exact={false}
-              path={appRoutes.AUTH}
-              component={AuthWrapper}
-            />
-            {routes.map((route, index) => {
-              return (
-                <Route key={index} {...route} component={route.component} />
-              );
-            })}
-            <Route path="*" render={() => <Redirect to={appRoutes.LOGIN} />} />
-          </Switch>
+          <ScrollToTop>
+            <Switch>
+              {/*<Redirect exact from={appRoutes.HOME} to={appRoutes.ACCOUNT} />*/}
+              <Route
+                exact={false}
+                path={appRoutes.AUTH}
+                component={AuthWrapper}
+              />
+              {routes.map((route, index) => {
+                return (
+                  <Route key={index} {...route} component={route.component} />
+                );
+              })}
+              <Route
+                path="*"
+                render={() => <Redirect to={appRoutes.LOGIN} />}
+              />
+            </Switch>
+          </ScrollToTop>
+          {authenticated && <PostList />}
+          <AboutUs />
+          <OurMission />
+          <Charter />
+          <DownloadLinks />
+          <AppFooter />
         </Router>
       )}
       <AppLoader loading={loading} />

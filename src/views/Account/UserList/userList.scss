@@ -4,28 +4,6 @@
   min-height: 100vh;
   padding: 1rem;
   background-color: $primary-bg;
-  .ant-table-wrapper {
-    width: 80%;
-    margin: 3rem auto;
-    .ant-table-thead {
-      th {
-        text-align: center;
-      }
-    }
-    .ant-table-tbody {
-      tr {
-        text-align: center;
-        background-color: $input-bg;
-        color: #FFFFFF;
-        &:hover {
-          > td {
-            background-color: $input-bg;
-          }
-        }
-      }
-    }
-
-  }
 }
 
 .user-list__status {

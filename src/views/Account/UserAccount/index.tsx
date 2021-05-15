@@ -11,6 +11,7 @@ import { UserRoleEnum } from "../../../enums/userRole.enum";
 import { UserService } from "../../../services/User/user.service";
 import { UserDocument } from "../../../models/UserDocument/userDocument.model";
 import { VerificationStatusEnum } from "../../../enums/verificationStatus.enum";
+import { isAdminOrModerator } from "../../../shared/utils/authUtils";
 
 interface UserAccountProps extends AuthReducerProps {}
 
@@ -52,10 +53,17 @@ function UserAccount({ user }: UserAccountProps) {
             )}
           </React.Fragment>
         )}
-        {user?.roles?.includes(UserRoleEnum.MODERATOR) && (
+        {isAdminOrModerator(user?.roles) && (
           <div>
             <Link to={AppRoutes.VERIFY_USERS}>
               <Button type="primary">Verify Users</Button>
+            </Link>
+          </div>
+        )}
+        {user?.roles?.includes(UserRoleEnum.ADMIN) && (
+          <div className="mt-4">
+            <Link to={AppRoutes.MODERATORS}>
+              <Button type="primary">Manage moderators</Button>
             </Link>
           </div>
         )}

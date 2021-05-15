@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+.moderator-list {
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: $primary-bg;
+  h1 {
+    color: #FFFFFF;
+  }
+}
+
+.moderator-list__table-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  .ant-table-wrapper {
+    width: 100%;
+  }
+}
+
+.moderator-list__actions {
+  .ant-btn.ant-btn-icon-only {
+    background-color: $primary-pink;
+    border: 1px solid $primary-pink;
+    color: #FFFFFF;
+  }
+}

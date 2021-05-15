@@ -95,7 +95,7 @@ function PostList({ user, authenticated }: PostListProps) {
   }, []);
 
   return (
-    <div className="post-list">
+    <div className="post-list" id="post-list">
       <img
         src={logoBlackBackground}
         alt="Black Background"

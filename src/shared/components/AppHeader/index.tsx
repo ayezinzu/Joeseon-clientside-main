@@ -23,10 +23,22 @@ function AppHeader({ authenticated }: AppHeaderProps) {
     );
   };
 
+  const handleNavigate = (id: string) => () => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <Menu mode="horizontal" className="app-header">
       <Menu.Item>
-        <img src={logo} alt="Joeseon Logo" className="app-header__logo" />
+        <Link to={AppRoutes.HOME}>
+          <img src={logo} alt="Joeseon Logo" className="app-header__logo" />
+        </Link>
       </Menu.Item>
       {authenticated && (
         <React.Fragment>
@@ -42,18 +54,41 @@ function AppHeader({ authenticated }: AppHeaderProps) {
               ACCOUNT
             </Link>
           </Menu.Item>
-          <Menu.Item key="news" className="float-right ml-4">
+          <Menu.Item
+            key="account"
+            className="float-right ml-4 text-white"
+            onClick={handleNavigate("post-list")}
+          >
             NEWS
           </Menu.Item>
         </React.Fragment>
       )}
-      <Menu.Item key="download" className="float-right ml-4">
+      <Menu.Item
+        key="our-mission"
+        className="float-right ml-4"
+        onClick={handleNavigate("our-mission")}
+      >
+        MISSION
+      </Menu.Item>
+      <Menu.Item
+        key="download-links"
+        className="float-right ml-4"
+        onClick={handleNavigate("download-links")}
+      >
         DOWNLOAD
       </Menu.Item>
-      <Menu.Item key="charter" className="float-right ml-4">
+      <Menu.Item
+        key="charter"
+        className="float-right ml-4"
+        onClick={handleNavigate("charter")}
+      >
         CHARTER
       </Menu.Item>
-      <Menu.Item key="about" className="float-right ml-4">
+      <Menu.Item
+        key="about"
+        className="float-right ml-4"
+        onClick={handleNavigate("about-us")}
+      >
         ABOUT
       </Menu.Item>
     </Menu>

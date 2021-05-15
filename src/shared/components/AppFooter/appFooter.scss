@@ -1,5 +1,24 @@
 @import "src/styles/variables";
 
 .app-footer {
+  background-color: $primary-bg;
+  padding: 3rem 5rem;
+  color: #FFFFFF;
+  div {
+    margin-bottom: 5px;
+  }
+  a {
+    color: #FFFFFF;
+  }
+}
 
+.app-footer__logo {
+  width: 150px;
+  margin: 3.5rem 0;
+}
+
+.app-footer__links > div {
+  &:not(:first-child) {
+    cursor: pointer;
+  }
 }

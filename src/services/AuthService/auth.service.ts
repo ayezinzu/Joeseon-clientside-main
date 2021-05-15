@@ -23,7 +23,7 @@ export class AuthService {
       .post(ApiRoutes.SIGNIN, userJSON)
       .then((response) => {
         localStorage.setItem("accessToken", response.data.accessToken);
-        const user = deserialize(User, response.data);
+        const user: User = deserialize(User, response.data as any);
         store.dispatch({
           type: AUTHENTICATED,
           payload: {

@@ -1,4 +1,4 @@
-import { serializable, alias, primitive, list } from "serializr";
+import { alias, list, primitive, serializable } from "serializr";
 import { UserRoleEnum } from "../enums/userRole.enum";
 import { UserDocument } from "./UserDocument/userDocument.model";
 

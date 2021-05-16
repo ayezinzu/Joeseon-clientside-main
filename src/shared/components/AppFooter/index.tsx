@@ -22,11 +22,27 @@ function AppFooter({ authenticated }: AppFooterProps) {
 
   return (
     <div className="app-footer">
-      <Row>
-        <Col span={12} className="app-footer__logo-wrapper">
+      <Row gutter={[0, 20]}>
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={12}
+          xl={12}
+          xxl={12}
+          className="app-footer__logo-wrapper"
+        >
           <img src={joseonlogo} alt="Logo" className="app-footer__logo" />
         </Col>
-        <Col span={4} className="app-footer__links">
+        <Col
+          xs={12}
+          sm={12}
+          md={4}
+          lg={4}
+          xl={4}
+          xxl={4}
+          className="app-footer__links"
+        >
           <div className="text-bold">Site Map</div>
           <div onClick={handleNavigate("about-us")}>ABOUT</div>
           {authenticated && (
@@ -36,14 +52,30 @@ function AppFooter({ authenticated }: AppFooterProps) {
           <div onClick={handleNavigate("charter")}>CHARTER</div>
           <div onClick={handleNavigate("download-links")}>DOWNLOAD</div>
         </Col>
-        <Col span={4} className="app-footer__links">
+        <Col
+          xs={12}
+          sm={12}
+          md={4}
+          lg={4}
+          xl={4}
+          xxl={4}
+          className="app-footer__links"
+        >
           <div className="text-bold">Socials</div>
           <div>INSTAGRAM</div>
           <div>FACEBOOK</div>
           <div>TWITTER</div>
         </Col>
         {!authenticated && (
-          <Col span={4} className="app-footer__links">
+          <Col
+            xs={12}
+            sm={12}
+            md={4}
+            lg={4}
+            xl={4}
+            xxl={4}
+            className="app-footer__links"
+          >
             <div>
               <Link to={AppRoutes.LOGIN}>LOGIN</Link>
             </div>

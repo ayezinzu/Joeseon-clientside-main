@@ -2,7 +2,7 @@
 
 .app-footer {
   background-color: $primary-bg;
-  padding: 3rem 5rem;
+  padding: 3rem 6%;
   color: #FFFFFF;
   div {
     margin-bottom: 5px;
@@ -20,5 +20,15 @@
 .app-footer__links > div {
   &:not(:first-child) {
     cursor: pointer;
+  }
+}
+
+@media (max-width: 986px) {
+
+  .app-footer {
+    padding: 3rem 5%;
+    div {
+      margin-bottom: 5px;
+    }
   }
 }

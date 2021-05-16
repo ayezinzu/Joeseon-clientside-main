@@ -2,7 +2,7 @@
 
 .charter {
   background: linear-gradient(180deg, rgba(237, 88, 90, 0.76) 40.62%, rgba(228, 65, 67, 0.63) 99.98%, rgba(48, 7, 7, 0.85) 99.99%);
-  padding: 5rem 15rem;
+  padding: 5rem 15%;
 }
 
 .charter__content {
@@ -17,5 +17,13 @@
   h2 {
     color: #FFFFFF;
     font-weight: 600;
+  }
+}
+
+
+@media (max-width: 986px) {
+
+  .charter {
+    padding: 5rem 10%;
   }
 }

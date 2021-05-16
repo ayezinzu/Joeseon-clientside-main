@@ -1,7 +1,7 @@
 @import "src/styles/variables";
 
 .our-mission {
-  padding: 5rem 15rem;
+  padding: 5rem 15%;
   h1 {
     color: $primary-pink;
     text-align: center;
@@ -12,7 +12,7 @@
     position: relative;
     color: $primary-pink;
     font-size: 20px;
-    padding-left: 6rem;
+    padding-left: 10%;
     margin-bottom: 3rem;
     &:before {
       content: '';
@@ -26,5 +26,31 @@
       top: 50%;
       transform: translateY(-50%);
     }
+  }
+}
+
+@media (max-width: 986px) {
+  .our-mission {
+    padding: 1rem 10%;
+    ul {
+      padding: 0;
+      li {
+        padding-left: 13%;
+        margin-bottom: 3rem;
+        &:before {
+          content: '';
+          width: 30px;
+          height: 30px;
+          position: absolute;
+          background-image: url('../../../assets/images/listItemIcon.png');
+          background-size: cover;
+          background-position: center;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
   }
 }

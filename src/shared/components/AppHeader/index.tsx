@@ -35,62 +35,39 @@ function AppHeader({ authenticated }: AppHeaderProps) {
 
   return (
     <Menu mode="horizontal" className="app-header">
-      <Menu.Item>
+      <Menu.Item className="app-header__logo-item">
         <Link to={AppRoutes.HOME}>
           <img src={logo} alt="Joeseon Logo" className="app-header__logo" />
         </Link>
       </Menu.Item>
-      {authenticated && (
-        <React.Fragment>
-          <Menu.Item
-            key="logout"
-            className="float-right ml-4"
-            onClick={handleLogout}
-          >
-            LOGOUT
-          </Menu.Item>
-          <Menu.Item key="account" className="float-right ml-4">
-            <Link to={AppRoutes.ACCOUNT} className="text-white">
-              ACCOUNT
-            </Link>
-          </Menu.Item>
-          <Menu.Item
-            key="account"
-            className="float-right ml-4 text-white"
-            onClick={handleNavigate("post-list")}
-          >
-            NEWS
-          </Menu.Item>
-        </React.Fragment>
-      )}
-      <Menu.Item
-        key="our-mission"
-        className="float-right ml-4"
-        onClick={handleNavigate("our-mission")}
-      >
+      <Menu.Item key="about" onClick={handleNavigate("about-us")}>
+        ABOUT
+      </Menu.Item>
+      <Menu.Item key="charter" onClick={handleNavigate("charter")}>
+        CHARTER
+      </Menu.Item>
+      <Menu.Item key="our-mission" onClick={handleNavigate("our-mission")}>
         MISSION
       </Menu.Item>
       <Menu.Item
         key="download-links"
-        className="float-right ml-4"
         onClick={handleNavigate("download-links")}
       >
         DOWNLOAD
       </Menu.Item>
-      <Menu.Item
-        key="charter"
-        className="float-right ml-4"
-        onClick={handleNavigate("charter")}
-      >
-        CHARTER
-      </Menu.Item>
-      <Menu.Item
-        key="about"
-        className="float-right ml-4"
-        onClick={handleNavigate("about-us")}
-      >
-        ABOUT
-      </Menu.Item>
+      {authenticated && (
+        <React.Fragment>
+          <Menu.Item key="news" onClick={handleNavigate("post-list")}>
+            NEWS
+          </Menu.Item>
+          <Menu.Item key="account">
+            <Link to={AppRoutes.ACCOUNT}>ACCOUNT</Link>
+          </Menu.Item>
+          <Menu.Item key="logout" onClick={handleLogout}>
+            LOGOUT
+          </Menu.Item>
+        </React.Fragment>
+      )}
     </Menu>
   );
 }

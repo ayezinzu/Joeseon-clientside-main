@@ -2,7 +2,7 @@
 
 .post-list {
   position: relative;
-  padding: 5rem;
+  padding: 5rem 6%;
   min-height: 180vh;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.76) 40.62%, rgba(61, 20, 20, 0.63) 99.98%, rgba(48, 7, 7, 0.85) 99.99%);
   .post-list__background {
@@ -90,5 +90,13 @@
     padding: 10px 25px;
     width: 120px;
     font-size: 16px;
+  }
+}
+
+
+@media (max-width: 986px) {
+
+  .post-list__background {
+    display: none;
   }
 }

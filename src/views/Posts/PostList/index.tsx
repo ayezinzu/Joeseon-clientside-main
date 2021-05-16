@@ -8,7 +8,6 @@ import PostService from "../../../services/Post/post.service";
 import AuthContainer from "../../../store/container/AuthContainer";
 import { AuthReducerProps } from "../../../store/reducers/authReducer";
 import PostForm from "../PostForm";
-import { UserRoleEnum } from "../../../enums/userRole.enum";
 import { PostPaginationDetail } from "../../../models/PostPaginationDetail/postPaginationDetail.model";
 import AppLoader from "../../../shared/components/AppLoader";
 import logoBlackBackground from "../../../assets/images/logoBlackBackground.png";
@@ -114,9 +113,9 @@ function PostList({ user, authenticated }: PostListProps) {
         <AppLoader loading={loading} />
       ) : (
         <div className="post-list__items">
-          <Row gutter={[40, 20]}>
+          <Row gutter={[40, 30]}>
             {postPaginationDetail?.posts?.map((post) => (
-              <Col span={8}>
+              <Col xs={24} sm={24} md={12} lg={8} xl={8} xxl={8}>
                 <div className="post-list__item">
                   <div className="post-list__item-header">
                     <img

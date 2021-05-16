@@ -21,7 +21,7 @@ const AuthWrapper = ({ authenticated }: AuthWrapperProps) => {
   return (
     <div className="auth-wrapper">
       <Row>
-        <Col span={12}>
+        <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
           <div className="auth-wrapper__brand">
             <img
               src={authBanner}
@@ -30,7 +30,7 @@ const AuthWrapper = ({ authenticated }: AuthWrapperProps) => {
             />
           </div>
         </Col>
-        <Col span={12}>
+        <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
           <div className="auth-wrapper__form-wrapper">
             <div>
               <img

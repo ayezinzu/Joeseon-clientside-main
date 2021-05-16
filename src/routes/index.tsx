@@ -98,31 +98,33 @@ const AppRoutes = ({ authenticated, user, setUser }: AppRoutesProps) => {
       {showRoutes && (
         <Router history={appHistory}>
           <AppHeader />
-          <ScrollToTop>
-            <Switch>
-              {/*<Redirect exact from={appRoutes.HOME} to={appRoutes.ACCOUNT} />*/}
-              <Route
-                exact={false}
-                path={appRoutes.AUTH}
-                component={AuthWrapper}
-              />
-              {routes.map((route, index) => {
-                return (
-                  <Route key={index} {...route} component={route.component} />
-                );
-              })}
-              <Route
-                path="*"
-                render={() => <Redirect to={appRoutes.LOGIN} />}
-              />
-            </Switch>
-          </ScrollToTop>
-          {authenticated && <PostList />}
-          <AboutUs />
-          <OurMission />
-          <Charter />
-          <DownloadLinks />
-          <AppFooter />
+          <div className="app-wrapper">
+            <ScrollToTop>
+              <Switch>
+                {/*<Redirect exact from={appRoutes.HOME} to={appRoutes.ACCOUNT} />*/}
+                <Route
+                  exact={false}
+                  path={appRoutes.AUTH}
+                  component={AuthWrapper}
+                />
+                {routes.map((route, index) => {
+                  return (
+                    <Route key={index} {...route} component={route.component} />
+                  );
+                })}
+                <Route
+                  path="*"
+                  render={() => <Redirect to={appRoutes.LOGIN} />}
+                />
+              </Switch>
+            </ScrollToTop>
+            {authenticated && <PostList />}
+            <AboutUs />
+            <OurMission />
+            <Charter />
+            <DownloadLinks />
+            <AppFooter />
+          </div>
         </Router>
       )}
       <AppLoader loading={loading} />

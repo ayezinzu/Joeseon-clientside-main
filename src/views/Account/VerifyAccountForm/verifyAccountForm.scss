@@ -40,3 +40,23 @@
 .verify-account-form__form-title {
   font-size: 20px;
 }
+
+
+@media (max-width: 986px) {
+
+  .verify-account-form {
+    padding-bottom: 5rem;
+    > div {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
+  .verify-account-form {
+    > div {
+      width: 80%;
+    }
+  }
+}

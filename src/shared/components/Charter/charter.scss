@@ -8,7 +8,7 @@
 .charter__content {
   color: #FFFFFF;
   background-color: $primary-pink;
-  padding: 3rem;
+  padding: 5%;
   h1 {
     color: #FFFFFF;
     text-align: center;
@@ -17,6 +17,11 @@
   h2 {
     color: #FFFFFF;
     font-weight: 600;
+    height: 70vh;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
   }
 }
 
@@ -24,6 +29,6 @@
 @media (max-width: 986px) {
 
   .charter {
-    padding: 5rem 10%;
+    padding: 5% 7%;
   }
 }

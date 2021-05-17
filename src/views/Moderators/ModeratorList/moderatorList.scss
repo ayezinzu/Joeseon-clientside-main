@@ -24,3 +24,17 @@
     color: #FFFFFF;
   }
 }
+
+@media (max-width: 986px) {
+
+  .moderator-list__title-wrapper {
+    margin-top: 2rem;
+  }
+  .moderator-list__table-wrapper {
+    width: 98%;
+    margin: 0 auto;
+  }
+  .moderator-list__actions {
+    width: 100px;
+  }
+}

@@ -129,13 +129,13 @@ function ModeratorList(props: ModeratorListProps) {
       ) : (
         <div className="moderator-list__table-wrapper">
           <Row className="mt-4 mb-4">
-            <Col span={12}>
-              <h1>MODERATORS</h1>
-            </Col>
-            <Col span={12} className="text-right">
+            <Col span={24} className="text-right">
               <Button type="primary" onClick={handleAddModerator}>
                 <PlusOutlined /> Add Moderators
               </Button>
+            </Col>
+            <Col span={24} className="moderator-list__title-wrapper">
+              <h1>MODERATORS</h1>
             </Col>
           </Row>
           <Row>

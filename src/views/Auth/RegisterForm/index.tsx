@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./registerForm.scss";
 import { Form, Formik, FormikValues } from "formik";
 import InputField from "../../../shared/components/InputField";
@@ -10,6 +10,11 @@ import "./registerForm.scss";
 import { registerFormValidation } from "./registerFormValidation";
 import ReCAPTCHA from "react-google-recaptcha";
 import AuthService from "../../../services/AuthService/auth.service";
+import DropdownField from "../../../shared/components/DropdownField";
+import {
+  IDropdownOption,
+  MetaService,
+} from "../../../services/Meta/meta.service";
 
 function RegisterForm() {
   const history = useHistory();
@@ -18,7 +23,24 @@ function RegisterForm() {
 
   const [formValues, setFormValues] = useState(new User());
 
+  const [factionOptions, setFactionOptions] = useState<IDropdownOption[]>([]);
+
   const [formLoading, setFormLoading] = useState(false);
+
+  useEffect(() => {
+    MetaService.fetchFactions(
+      (factions: string[]) => {
+        setFactionOptions(
+          factions.map((faction) => ({
+            label: faction,
+            value: faction,
+          }))
+        );
+      },
+      () => {},
+      () => {}
+    );
+  }, []);
 
   const handleSubmit = (values: FormikValues) => {
     const user = Object.assign(new User(), values);
@@ -76,6 +98,14 @@ function RegisterForm() {
               type="password"
               name="confirmPassword"
               placeholder="Confirm password"
+            />
+            <DropdownField
+              title="Faction"
+              placeHolder="Select Faction"
+              name="faction"
+              setFieldValue={setFieldValue}
+              options={factionOptions}
+              value={values.faction}
             />
             <ReCAPTCHA
               ref={recaptchaRef}

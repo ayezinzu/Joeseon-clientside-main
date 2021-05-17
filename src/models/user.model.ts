@@ -33,6 +33,9 @@ export class User {
   @serializable(alias("new_password", primitive()))
   newPassword?: string;
 
+  @serializable(alias("faction", primitive()))
+  faction?: string;
+
   @serializable(alias("token", primitive()))
   token?: string;
 

@@ -13,4 +13,5 @@ export const ApiRoutes = {
   MY_DOCUMENT: "/user/document",
   POSTS: "/posts",
   MODERATORS: "/moderators",
+  FACTIONS: "/factions",
 };

@@ -32,7 +32,9 @@ function AppFooter({ authenticated }: AppFooterProps) {
           xxl={12}
           className="app-footer__logo-wrapper"
         >
-          <img src={joseonlogo} alt="Logo" className="app-footer__logo" />
+          <Link to={AppRoutes.HOME}>
+            <img src={joseonlogo} alt="Logo" className="app-footer__logo" />
+          </Link>
         </Col>
         <Col
           xs={12}

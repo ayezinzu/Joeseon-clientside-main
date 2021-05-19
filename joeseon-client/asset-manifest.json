@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.39b4b217.chunk.css",
+    "main.js": "/static/js/main.4a561767.chunk.js",
+    "main.js.map": "/static/js/main.4a561767.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.90e76721.js",
+    "runtime-main.js.map": "/static/js/runtime-main.90e76721.js.map",
+    "static/css/2.0b5d44dd.chunk.css": "/static/css/2.0b5d44dd.chunk.css",
+    "static/js/2.c3984201.chunk.js": "/static/js/2.c3984201.chunk.js",
+    "static/js/2.c3984201.chunk.js.map": "/static/js/2.c3984201.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.3433bc08eb247e293a65737dc34fe902.js": "/precache-manifest.3433bc08eb247e293a65737dc34fe902.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.0b5d44dd.chunk.css.map": "/static/css/2.0b5d44dd.chunk.css.map",
+    "static/css/main.39b4b217.chunk.css.map": "/static/css/main.39b4b217.chunk.css.map",
+    "static/js/2.c3984201.chunk.js.LICENSE.txt": "/static/js/2.c3984201.chunk.js.LICENSE.txt",
+    "static/media/authBanner.png": "/static/media/authBanner.37c6f486.png",
+    "static/media/logoBlackBackground.png": "/static/media/logoBlackBackground.5321c8fa.png",
+    "static/media/logoPinkBackground.png": "/static/media/logoPinkBackground.f044715b.png",
+    "static/media/newsBackground.png": "/static/media/newsBackground.9970ce2e.png",
+    "static/media/userAvatar.png": "/static/media/userAvatar.051e6e86.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.90e76721.js",
+    "static/css/2.0b5d44dd.chunk.css",
+    "static/js/2.c3984201.chunk.js",
+    "static/css/main.39b4b217.chunk.css",
+    "static/js/main.4a561767.chunk.js"
+  ]
+}

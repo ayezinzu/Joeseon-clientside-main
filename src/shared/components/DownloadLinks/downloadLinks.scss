@@ -5,6 +5,19 @@
   padding: 5rem 15%;
   h1 {
     color: #FFFFFF;
+    margin-bottom: 3rem;
     text-align: center;
+  }
+
+  .download-links__item {
+    background-color: $primary-pink;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+  img {
+    display: block;
+    width: 100px;
+    margin: 1rem auto 3rem auto;
   }
 }
